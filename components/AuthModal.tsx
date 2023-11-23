@@ -5,16 +5,15 @@ import {
   useSupabaseClient,
 } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
-import { ThemeMinimal, ThemeSupa } from "@supabase/auth-ui-shared";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useEffect } from "react";
-
 
 const AuthModal = () => {
   const supabaseClient = useSupabaseClient();
   const router = useRouter();
   const { session } = useSessionContext();
-  const { isOpen, closeModal } = useAuthModal(); 
+  const { isOpen, closeModal } = useAuthModal();
   useEffect(() => {
     if (session) {
       router.refresh;
@@ -36,7 +35,7 @@ const AuthModal = () => {
       <Auth
         theme="dark"
         magicLink
-        providers={["google", "facebook"]}
+        providers={["google"]}
         supabaseClient={supabaseClient}
         appearance={{
           theme: ThemeSupa,
