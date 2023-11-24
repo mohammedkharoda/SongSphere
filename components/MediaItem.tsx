@@ -5,7 +5,7 @@ import React from "react";
 
 interface MediumItemProps {
   data: Song;
-  onClick: (id: string) => void;
+  onClick?: (id: string) => void;
 }
 
 const MediaItem = ({ data, onClick }: MediumItemProps) => {
