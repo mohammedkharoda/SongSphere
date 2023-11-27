@@ -27,7 +27,7 @@ const AuthModal = () => {
   };
   return (
     <Modal
-      title="Welcomeback"
+      title="Welcome back"
       description="Login to your account"
       isOpen={isOpen}
       onChange={onChange}

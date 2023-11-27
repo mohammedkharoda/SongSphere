@@ -6,18 +6,23 @@ import useUploadModal from "@/hooks/uploadModal";
 import { Song } from "@/types";
 import MediaItem from "./MediaItem";
 import useOnPlay from "@/hooks/useOnPlay";
-
+import useSubscribeModal from "@/hooks/useSubscribeModal";
 interface LibraryProps {
   songs: Song[];
 }
 const Library = ({ songs }: LibraryProps) => {
   const authModal = useAuthModal();
-  const { user } = useUser();
+  const subscribeModal = useSubscribeModal();
+  const { user, subscription } = useUser();
   const uploadModal = useUploadModal();
   const onPlay = useOnPlay(songs);
   const uploadMusic = () => {
     if (!user) {
       authModal.openModal();
+      return;
+    }
+    if (!subscription) {
+      subscribeModal.onOpen();
       return;
     }
 
